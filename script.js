@@ -1,13 +1,10 @@
-// Анимации при прокрутке
 document.addEventListener('DOMContentLoaded', function() {
-    // Добавляем классы для анимаций
     const sections = document.querySelectorAll('.section-header, .project-card, .service-card, .form-container');
 
     sections.forEach(section => {
         section.classList.add('fade-in');
     });
 
-    // Функция для проверки видимости элемента
     function checkVisibility() {
         const elements = document.querySelectorAll('.fade-in');
         const windowHeight = window.innerHeight;
@@ -15,11 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.forEach(element => {
             const position = element.getBoundingClientRect();
 
-            // Если элемент видим на экране
             if (position.top < windowHeight * 0.9) {
                 element.classList.add('appear');
 
-                // Для заголовков секций также добавляем класс appear
                 if (element.classList.contains('section-header')) {
                     element.classList.add('appear');
                 }
@@ -27,21 +22,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Запускаем проверку при загрузке и при прокрутке
     window.addEventListener('scroll', checkVisibility);
     checkVisibility(); // Проверяем при загрузке
 
-    // Анимация для логотипа
     const logo = document.querySelector('.logo');
-    logo.addEventListener('mouseenter', function() {
-        this.classList.add('animate__animated', 'animate__pulse');
-    });
+    if (logo) {
+        logo.addEventListener('mouseenter', function() {
+            this.classList.add('animate__animated', 'animate__pulse');
+        });
 
-    logo.addEventListener('animationend', function() {
-        this.classList.remove('animate__animated', 'animate__pulse');
-    });
+        logo.addEventListener('animationend', function() {
+            this.classList.remove('animate__animated', 'animate__pulse');
+        });
+    }
 
-    // Анимация для сервисных карточек
     const serviceCards = document.querySelectorAll('.service-card');
     serviceCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -55,14 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Обработка отправки формы
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Здесь можно добавить код для отправки формы через AJAX
-            // Пример анимации успешной отправки:
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
 
@@ -86,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Функции для слайдера процесса разработки
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.getElementById('process-slider');
     const cards = slider.querySelectorAll('.process-card');

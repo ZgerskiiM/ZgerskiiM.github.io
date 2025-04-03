@@ -363,7 +363,7 @@
 }
 
 .footer1 {
-    background-color: white;
+    background-color: rgb(14, 14, 14);
 }
 
 @media (max-width: 768px) {
